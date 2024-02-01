@@ -1,0 +1,25 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "main": "dist-electron/main.js",
+  "devDependencies": {
+    "@mdi/font": "^7.4.47",
+    "electron": "^28.2.1",
+    "electron-builder": "^24.9.1",
+    "nuxt": "^3.10.0",
+    "nuxt-electron": "^0.7.0",
+    "vite-plugin-electron": "^0.15.6",
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "vite-plugin-vuetify": "^2.0.1",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5",
+    "vuetify": "^3.5.2"
+  }
+}

@@ -25,7 +25,8 @@
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.4.47",
-    "@mdi/svg": "^7.4.47",
+    "@nftstorage/ipfs-cluster": "^5.0.1",
+    "kubo-rpc-client": "^3.0.2",
     "sass": "^1.70.0"
   }
 }

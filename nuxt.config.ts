@@ -17,4 +17,7 @@ export default defineNuxtConfig({
     transpile: ["vuetify"],
   },
   modules: ["nuxt-electron"],
+  routeRules: {
+    'http://localhost:54911': {cors: true, headers: {"Access-control-allow-origin": "*"}},
+  }
 });

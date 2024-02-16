@@ -1,1 +1,1 @@
-"use strict";const e=require("electron");e.app.whenReady().then(()=>new e.BrowserWindow().loadURL(process.env.VITE_DEV_SERVER_URL));
+"use strict";const e=require("electron");require("path");e.app.whenReady().then(()=>new e.BrowserWindow({width:1e3,height:600,webPreferences:{nodeIntegration:!0}}).loadURL(process.env.VITE_DEV_SERVER_URL));e.ipcMain.on("click",(n,r)=>{console.log(r),n.sender.send("click","teste")});

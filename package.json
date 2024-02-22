@@ -1,6 +1,8 @@
 {
   "name": "nuxt-app",
   "private": true,
+  "author": {"name": "Luiz", "email": "lvmcs1@aluno.ifal.edu.br"},
+  "description": "App IPFS com conexão cluster",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",

@@ -1,6 +1,6 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import { shell } from "electron";
-import {exec} from 'child_process'
+import { exec } from "child_process";
 import path from "path";
 
 const createWindow = () => {
@@ -20,14 +20,19 @@ app.whenReady().then(() => {
   const main = createWindow();
   // const cluster = createWindow()
   // cluster.webContents.downloadURL("https://dist.ipfs.tech/ipfs-cluster-service/v1.0.8/ipfs-cluster-service_v1.0.8_windows-amd64.zip")
-  let p = path.join(__dirname, "../../../..")
-  // console.log(p);
-  
-  
-  let comando = exec(`C:/Users/vinic/ipfs-cluster-service.exe daemon`, (error, stdout: string, stderr: string) => {
-    console.log(error), console.log(stderr), console.log(stdout)
-  })
-  console.log("aqui");
+
+  let init = exec(
+    `C:/Users/vinic/ipfs-cluster-service.exe init -f http://bafybeigq7gjeusrv3tu7kaiv5yirr3vb76xqysjalwlec5fwkmudqx2bh4.ipfs.localhost:8080/`,
+    (error, stdout: string, stderr: string) => {
+      console.log(error), console.log(stderr), console.log(stdout);
+    }
+  );
+  let bootstrap = exec(
+    `C:/Users/vinic/ipfs-cluster-service.exe daemon --bootstrap /ip4/172.19.0.6/tcp/9096/p2p/12D3KooWR8MxQgHGLF5vx1ShZy3Dkb5ZMjgm5MjVpJaDpi1Qqpwp`,
+    (error, stdout: string, stderr: string) => {
+      console.log(error), console.log(stderr), console.log(stdout);
+    }
+  );
   main.loadURL(process.env.VITE_DEV_SERVER_URL!);
 });
 

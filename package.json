@@ -1,14 +1,33 @@
 {
   "name": "nuxt-app",
-  "private": true,
-  "author": {"name": "Luiz", "email": "lvmcs1@aluno.ifal.edu.br"},
   "description": "App IPFS com conexão cluster",
+  "version": "1.0.0",
+  "author": {
+    "name": "Luiz",
+    "email": "lvmcs1@aluno.ifal.edu.br"
+  },
+  "private": true,
+  "homepage": "build/index.html",
+  "build": {
+    "appId": "com.example.electron",
+    "productName": "electron ipfs file uploader",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": ""
+    }
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main-build/electron.js",
+    "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main-build/electron.js",
+    "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main-build/electron.js"
   },
   "main": "dist-electron/main.js",
   "devDependencies": {
@@ -28,6 +47,7 @@
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.4.47",
     "@nftstorage/ipfs-cluster": "^5.0.1",
+    "electron-is-dev": "^3.0.1",
     "kubo-rpc-client": "^3.0.2",
     "sass": "^1.70.0"
   }

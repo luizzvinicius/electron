@@ -8,13 +8,28 @@ const createWindow = () => {
   return new BrowserWindow({
     width: 1000,
     height: 600,
-    webPreferences: { nodeIntegration: true },
+    webPreferences: {
+      preload,
+      nodeIntegrationInWorker: true,
+      contextIsolation: false,
+      nodeIntegration: true,
+      webSecurity: false,
+    },
   });
 };
 
+process.env.ROOT = path.join(__dirname, "..");
+process.env.DIST = path.join(process.env.ROOT, "dist-electron");
+process.env.VITE_PUBLIC = process.env.VITE_DEV_SERVER_URL
+  ? path.join(process.env.ROOT, "public")
+  : path.join(process.env.ROOT, ".output/public");
+process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
+
+const preload = path.join(process.env.DIST, "preload.js");
+
 app.whenReady().then(() => {
   // try {
-  //   shell.openPath(path.join(__dirname, "../executables/IPFS-Desktop-0.33.0.exe"));
+  //   shell.openPath(path.join(__dirname, "../resources/IPFS-Desktop-0.33.0.exe"));
   // } catch (e) {
   //   console.log(e);
   // }
@@ -35,14 +50,19 @@ app.whenReady().then(() => {
       console.log(error), console.log(stderr), console.log(stdout);
     }
   );
-  main.loadURL(
-    isDev
-      ? process.env.VITE_DEV_SERVER_URL!
-      : `file://${path.join(__dirname, "../build/index.html")}`
-  );
+  console.log(process.env.VITE_PUBLIC!);
+  if (process.env.VITE_DEV_SERVER_URL) {
+    main.loadURL(process.env.VITE_DEV_SERVER_URL);
+  } else {
+    console.log(process.env.VITE_PUBLIC!);
+    main.loadFile(path.join(process.env.VITE_PUBLIC!, "index.html"));
+  }
+  // main.loadURL(process.env.VITE_DEV_SERVER_URL!);
+  // isDev
+  //   ? process.env.VITE_DEV_SERVER_URL!
+  //   : `file://${path.join(__dirname, "../build/index.html")}`;
 });
 
-// escutar envento e chamar IPFS
 ipcMain.on("click", (event, args) => {
   console.log(args);
   event.sender.send("click", "teste");

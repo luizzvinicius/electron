@@ -41,7 +41,8 @@
 <script setup lang="ts">
 import SvgIcon from "@jamescoyle/vue-icon";
 import { mdiCloudUpload } from "@mdi/js";
-import {uploadFile} from '../electron/ipfs/func'
+import { uploadFile } from '../electron/ipfs/func'
+import { ref } from "vue";
 
 const files = ref<File[]>([]);
 
@@ -61,4 +62,4 @@ const onSend = () => {
   word-break: keep-all;
   text-wrap: nowrap;
 }
-</style>
+</style>./electron/ipfs/func

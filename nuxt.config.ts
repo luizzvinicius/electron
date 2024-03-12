@@ -7,7 +7,14 @@ export default defineNuxtConfig({
       {
         entry: "electron/main.ts",
       },
+      {
+        entry: "electron/preload.ts",
+        onstart(args) {
+          args.reload()
+        }
+      }
     ],
+    renderer: {}
   },
   css: [
     "vuetify/lib/styles/main.sass",

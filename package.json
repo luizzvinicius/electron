@@ -1,22 +1,51 @@
 {
   "name": "nuxt-app",
-  "description": "App IPFS com conexão cluster",
+  "description": "App IPFS com conexao cluster",
   "version": "1.0.0",
+  "license": "MIT",
+  "main": "dist-electron/main.js",
+  "private": true,
   "author": {
     "name": "Luiz",
     "email": "lvmcs1@aluno.ifal.edu.br"
   },
-  "private": true,
-  "homepage": "build/index.html",
+  "homepage": "https://github.com/luizzvinicius/electron",
   "build": {
-    "appId": "com.example.electron",
+    "appId": "com.electron.ALEX_IPFS",
+    "asar": false,
     "productName": "electron ipfs file uploader",
-    "files": [
-      "build/**/*",
-      "node_modules/**/*"
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "artifactName": "${productName}_${version}.${ext}"
+    },
+    "mac": {
+      "artifactName": "${productName}_${version}.${ext}",
+      "target": ["dmg"]
+    },
+    "extraFiles": [
+      {
+        "from": "resources",
+        "to": "resources/downloads"
+      }
     ],
     "directories": {
-      "buildResources": ""
+      "output": "release"
+    },
+    "files": [
+      ".output/**/*",
+      "node_modules/**/*",
+      "dist-electron"
+    ],
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false
     }
   },
   "scripts": {
@@ -25,15 +54,14 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main-build/electron.js",
-    "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main-build/electron.js",
-    "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main-build/electron.js"
+    "build:win": "nuxi build --prerender && electron-builder -w",
+    "build:mac": "nuxi build && electron-builder -m",
+    "build:linux": "nuxi build && electron-builder -l"
   },
-  "main": "dist-electron/main.js",
   "devDependencies": {
     "@mdi/font": "^7.4.47",
     "electron": "^28.2.1",
-    "electron-builder": "^24.9.1",
+    "electron-builder": "^24.12.0",
     "nuxt": "^3.10.0",
     "nuxt-electron": "^0.7.0",
     "vite-plugin-electron": "^0.15.6",

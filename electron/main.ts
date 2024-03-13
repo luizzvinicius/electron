@@ -57,8 +57,8 @@ app.whenReady().then(() => {
   if (process.env.VITE_DEV_SERVER_URL) {
     main.loadURL(process.env.VITE_DEV_SERVER_URL);
   } else {
-    main.loadFile(path.join(process.env.VITE_PUBLIC!, "index.html"));
     // main.loadFile(path.join(process.env.ROOT!, "release/win-unpacked/resources/app/.output/public/index.html"));
+    main.loadFile(path.join(process.env.VITE_PUBLIC!, "index.html"));
   }
 });
 

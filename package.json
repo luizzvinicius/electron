@@ -1,10 +1,9 @@
 {
   "name": "nuxt-app",
-  "description": "App IPFS com conexao cluster",
+  "private": true,
   "version": "1.0.0",
   "license": "MIT",
   "main": "dist-electron/main.js",
-  "private": true,
   "author": {
     "name": "Luiz",
     "email": "lvmcs1@aluno.ifal.edu.br"
@@ -38,7 +37,6 @@
     },
     "files": [
       ".output/**/*",
-      "node_modules/**/*",
       "dist-electron"
     ],
     "nsis": {
@@ -54,9 +52,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "build:win": "nuxi build --prerender && electron-builder -w",
-    "build:mac": "nuxi build && electron-builder -m",
-    "build:linux": "nuxi build && electron-builder -l"
+    "build:app": "nuxt build --prerender && electron-builder"
   },
   "devDependencies": {
     "@mdi/font": "^7.4.47",

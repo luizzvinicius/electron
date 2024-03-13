@@ -1,8 +1,12 @@
 import { app, BrowserWindow, ipcMain } from "electron";
+import path from "path";
 import { shell } from "electron";
 import { exec } from "child_process";
-import path from "path";
 import isDev from "electron-is-dev";
+
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const createWindow = () => {
   return new BrowserWindow({
@@ -18,10 +22,11 @@ const createWindow = () => {
   });
 };
 process.env.ROOT = path.join(__dirname, "..");
-process.env.DIST = path.join(process.env.ROOT!, "dist-electron");
+process.env.DIST = path.join(process.env.ROOT, "dist-electron");
 process.env.VITE_PUBLIC = process.env.VITE_DEV_SERVER_URL
   ? path.join(process.env.ROOT, "public")
   : path.join(process.env.ROOT, ".output/public");
+process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
 
 const preload = path.join(process.env.DIST, "preload.js");
 
@@ -48,11 +53,12 @@ app.whenReady().then(() => {
       console.log(error), console.log(stderr), console.log(stdout);
     }
   );
+
   if (process.env.VITE_DEV_SERVER_URL) {
-    main.loadURL(process.env.VITE_DEV_SERVER_URL!);
+    main.loadURL(process.env.VITE_DEV_SERVER_URL);
   } else {
-    // main.loadFile(path.join(process.env.ROOT!, "release/win-unpacked/resources/app/.output/public/index.html"));
     main.loadFile(path.join(process.env.VITE_PUBLIC!, "index.html"));
+    // main.loadFile(path.join(process.env.ROOT!, "release/win-unpacked/resources/app/.output/public/index.html"));
   }
 });
 

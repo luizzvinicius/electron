@@ -62,4 +62,4 @@ const onSend = () => {
   word-break: keep-all;
   text-wrap: nowrap;
 }
-</style>./electron/ipfs/func
+</style>

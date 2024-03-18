@@ -40,25 +40,24 @@ app.whenReady().then(() => {
   // const cluster = createWindow()
   // cluster.webContents.downloadURL("https://dist.ipfs.tech/ipfs-cluster-service/v1.0.8/ipfs-cluster-service_v1.0.8_windows-amd64.zip")
 
-  let init = exec(
-    `C:/Users/vinic/ipfs-cluster-service.exe init -f http://bafybeigq7gjeusrv3tu7kaiv5yirr3vb76xqysjalwlec5fwkmudqx2bh4.ipfs.localhost:8080/`,
-    (error, stdout: string, stderr: string) => {
-      console.log(error), console.log(stderr), console.log(stdout);
-    }
-  );
-  let bootstrap = exec(
-    "C:/Users/vinic/ipfs-cluster-service.exe -f daemon --bootstrap /ip4/127.0.0.1/tcp/9092/p2p/12D3KooWR8MxQgHGLF5vx1ShZy3Dkb5ZMjgm5MjVpJaDpi1Qqpwp",
-    // ipfs-cluster-service daemon --bootstrap /ip4/127.0.0.1/tcp/9092/p2p/12D3KooWR8MxQgHGLF5vx1ShZy3Dkb5ZMjgm5MjVpJaDpi1Qqpwp
-    (error, stdout: string, stderr: string) => {
-      console.log(error), console.log(stderr), console.log(stdout);
-    }
-  );
+  // let init = exec(
+  //   `C:/Users/vinic/ipfs-cluster-service.exe init -f http://bafybeigq7gjeusrv3tu7kaiv5yirr3vb76xqysjalwlec5fwkmudqx2bh4.ipfs.localhost:8080/`,
+  //   (error, stdout: string, stderr: string) => {
+  //     console.log(error), console.log(stderr), console.log(stdout);
+  //   }
+  // );
+  // let bootstrap = exec(
+  //   "C:/Users/vinic/ipfs-cluster-service.exe -f daemon --bootstrap /ip4/127.0.0.1/tcp/9092/p2p/12D3KooWR8MxQgHGLF5vx1ShZy3Dkb5ZMjgm5MjVpJaDpi1Qqpwp",
+  //   // ipfs-cluster-service daemon --bootstrap /ip4/127.0.0.1/tcp/9092/p2p/12D3KooWR8MxQgHGLF5vx1ShZy3Dkb5ZMjgm5MjVpJaDpi1Qqpwp
+  //   (error, stdout: string, stderr: string) => {
+  //     console.log(error), console.log(stderr), console.log(stdout);
+  //   }
+  // );
 
   if (process.env.VITE_DEV_SERVER_URL) {
     main.loadURL(process.env.VITE_DEV_SERVER_URL);
   } else {
-    // main.loadFile(path.join(process.env.ROOT!, "release/win-unpacked/resources/app/.output/public/index.html"));
-    main.loadFile(path.join(process.env.VITE_PUBLIC!, "index.html"));
+    main.loadFile(path.join(process.env.VITE_PUBLIC!, "index.html"))
   }
 });
 

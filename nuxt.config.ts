@@ -16,6 +16,14 @@ export default defineNuxtConfig({
     ],
     renderer: {}
   },
+  router: {
+    options: {
+      hashMode: true,
+    },
+  },
+  app: {
+    baseURL: "./",
+  },
   css: [
     "vuetify/lib/styles/main.sass",
     "@mdi/font/css/materialdesignicons.min.css",

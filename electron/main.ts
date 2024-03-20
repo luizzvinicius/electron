@@ -33,7 +33,7 @@ const preload = path.join(process.env.DIST, "preload.js");
 const pathToEXE = "release/win-unpacked/resources/downloads/"
 app.whenReady().then(async () => {  
   try {
-    shell.openPath(path.join(process.env.ROOT!, `${pathToEXE}IPFS-Desktop.exe`));
+    shell.openPath(path.join(process.env.ROOT!, `${pathToEXE}IPFS-Desktop-0.33.0.exe`));
     let zip = new AdmZip(path.join(process.env.ROOT!, `${pathToEXE}ipfs-cluster-service_v1.0.8_windows-amd64.zip`));
     zip.extractAllTo(path.join(process.env.ROOT!, `${pathToEXE}`));
     await shell.openPath(path.join(process.env.ROOT!, `${pathToEXE}ipfs-cluster-service/ipfs-cluster-service.exe`));

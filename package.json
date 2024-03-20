@@ -26,16 +26,19 @@
       "artifactName": "${productName}_${version}.${ext}",
       "target": ["dmg"]
     },
+    "directories": {
+      "output": "release",
+      "buildResources": "resources"
+    },
     "extraFiles": [
       {
         "from": "resources",
         "to": "resources/downloads"
       }
     ],
-    "directories": {
-      "output": "release"
-    },
     "files": [
+      "build/**/*",
+      "node_modules/**/*",
       ".output/**/*",
       "dist-electron"
     ],
@@ -71,7 +74,7 @@
     "@jamescoyle/vue-icon": "^0.1.2",
     "@mdi/js": "^7.4.47",
     "@nftstorage/ipfs-cluster": "^5.0.1",
-    "electron-is-dev": "^3.0.1",
+    "adm-zip": "^0.5.12",
     "kubo-rpc-client": "^3.0.2",
     "sass": "^1.70.0"
   }

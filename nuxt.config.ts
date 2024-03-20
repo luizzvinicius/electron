@@ -5,10 +5,10 @@ export default defineNuxtConfig({
   electron: {
     build: [
       {
-        entry: "electron/main.ts",
+        entry: "electron/preload.ts",
       },
       {
-        entry: "electron/preload.ts",
+        entry: "electron/main.ts",
         onstart(args) {
           args.reload()
         }

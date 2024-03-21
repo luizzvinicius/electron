@@ -1,6 +1,9 @@
 // import { BrowserWindow } from "electron";
 // import { platform } from "os";
 // import path from 'path'
+// import { shell } from "electron";
+// import isDev from "electron-is-dev";
+// const AdmZip = require("adm-zip");
 
 // const plataforma = platform();
 // let url: string = ''

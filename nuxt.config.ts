@@ -6,12 +6,12 @@ export default defineNuxtConfig({
     build: [
       {
         entry: "electron/preload.ts",
-      },
-      {
-        entry: "electron/main.ts",
         onstart(args) {
           args.reload()
         }
+      },
+      {
+        entry: "electron/main.ts",
       }
     ],
     renderer: {}

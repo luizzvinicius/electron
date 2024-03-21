@@ -17,14 +17,18 @@
       "target": [
         {
           "target": "nsis",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         }
       ],
       "artifactName": "${productName}_${version}.${ext}"
     },
     "mac": {
       "artifactName": "${productName}_${version}.${ext}",
-      "target": ["dmg"]
+      "target": [
+        "dmg"
+      ]
     },
     "directories": {
       "output": "release",
@@ -75,6 +79,7 @@
     "@mdi/js": "^7.4.47",
     "@nftstorage/ipfs-cluster": "^5.0.1",
     "adm-zip": "^0.5.12",
+    "electron-is-dev": "^3.0.1",
     "kubo-rpc-client": "^3.0.2",
     "sass": "^1.70.0"
   }
